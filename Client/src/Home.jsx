@@ -12,7 +12,7 @@ function Home() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/getitems')
+      const response = await axios.get('https://crud-application-server-jqfo.onrender.com/api/getitems')
       setListData(response.data.data)
     } catch (error) {
       console.error('Error fetching data:', error.message)
@@ -25,7 +25,7 @@ function Home() {
 
   const handleDelete = async (_id) => {
     try {
-      const response = await axios.delete(`http://localhost:3000/api/deleteitem/${_id}`)
+      const response = await axios.delete(`https://crud-application-server-jqfo.onrender.com/api/deleteitem/${_id}`)
       console.log(response.data)
       fetchData() // Refresh the list after deletion
     } catch (error) {
@@ -35,7 +35,7 @@ function Home() {
 
   const handleTaken = async (_id, istaken) => {
     try {
-      const response = await axios.patch(`http://localhost:3000/api/updateTaken/${_id}`, { istaken: !istaken })
+      const response = await axios.patch(`https://crud-application-server-jqfo.onrender.com/api/updateTaken/${_id}`, { istaken: !istaken })
       console.log(response.data)
       fetchData() // Refresh the list after updating 'taken' status
     } catch (error) {
@@ -72,7 +72,7 @@ function Home() {
     event.preventDefault()
     const newItem = { product: itemName, quantity: itemQuantity, unit: itemMetric }
     try {
-      const response = await axios.post('http://localhost:3000/api/additem', newItem)
+      const response = await axios.post('https://crud-application-server-jqfo.onrender.com/api/additem', newItem)
       console.log(response.data)
       fetchData() // Refresh the list after adding
       // Clear the form
@@ -88,7 +88,7 @@ function Home() {
     event.preventDefault()
     const updatedItem = { product: itemName, quantity: itemQuantity, unit: itemMetric }
     try {
-      const response = await axios.patch(`http://localhost:3000/api/update/${itemId}`, updatedItem)
+      const response = await axios.patch(`https://crud-application-server-jqfo.onrender.com/api/update/${itemId}`, updatedItem)
       console.log(response.data)
       fetchData() // Refresh the list after editing
       closeEdit() // Close the edit modal and clear state
